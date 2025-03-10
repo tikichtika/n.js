@@ -19,6 +19,7 @@
             height: 100vh;
             background-color: #f8f9fa;
             text-align: center;
+            overflow: hidden;
         }
 
         /* Model Viewer for Desktop */
@@ -35,9 +36,12 @@
             }
         }
 
-        /* AR Button (Visible on Small Screens) */
+        /* AR Button */
         .custom-ar-button {
-            display: none; /* Hide by default */
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
             width: 90%;
             max-width: 280px;
             height: 60px;
@@ -50,21 +54,18 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease-in-out;
+            z-index: 10; /* Ensures button stays above model */
         }
 
         .custom-ar-button:hover {
             background: linear-gradient(135deg, #ff5722, #e64a19);
-            transform: scale(1.05);
+            transform: translateX(-50%) scale(1.05);
         }
 
         /* Show AR button only on small screens */
         @media (max-width: 768px) {
             .custom-ar-button {
                 display: block;
-                position: absolute;
-                bottom: 10%;
-                left: 50%;
-                transform: translateX(-50%);
             }
         }
     </style>
@@ -79,7 +80,7 @@
         camera-controls
         auto-rotate>
         
-        <!-- Custom AR Button for Small Screens -->
+        <!-- Fixed AR Button (Stays in Place) -->
         <button slot="ar-button" class="custom-ar-button">🚀 عرض في الواقع المعزز</button>
 
     </model-viewer>
