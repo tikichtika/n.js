@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Model</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/ar.js/1.7.2/aframe/build/aframe-ar.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: white; background: rgba(0, 0, 0, 0.7); padding: 10px 20px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="loading">الرجاء الانتظار... يتم تحميل الواقع المعزز</div>
+
+    <a-scene embedded arjs>
+        <a-light type="directional" position="0 5 5" intensity="1"></a-light>
+        <a-camera position="0 1.6 0"></a-camera>
+        <a-gltf-model src="https://raw.githubusercontent.com/tikichtika/3D-models/main/nabta.glb" position="0 0 0" scale="1 1 1"></a-gltf-model>
+    </a-scene>
+
+    <script>
+        document.querySelector('a-scene').addEventListener('loaded', () => {
+            document.getElementById('loading').style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
